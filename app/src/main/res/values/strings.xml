@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Architecture Patterns</string>
+    <string name="pattern_mvc">MVC</string>
+    <string name="pattern_mvp">MVP</string>
+    <string name="pattern_mvvm">MVVM</string>
+    <string name="approach_one">Approach One</string>
+    <string name="approach_two">Approach Two</string>
+    <string name="hit_api">Hit Api</string>
 </resources>
