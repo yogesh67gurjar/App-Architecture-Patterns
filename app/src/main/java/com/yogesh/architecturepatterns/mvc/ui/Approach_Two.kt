@@ -11,5 +11,13 @@ class Approach_Two : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityApproachTwoBinding = ActivityApproachTwoBinding.inflate(layoutInflater)
         setContentView(activityApproachTwoBinding.root)
+
+        clickEvents()
+    }
+
+    private fun clickEvents() {
+        activityApproachTwoBinding.hitBtn.setOnClickListener {
+
+        }
     }
 }
