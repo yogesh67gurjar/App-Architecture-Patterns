@@ -1,4 +1,4 @@
-package com.yogesh.architecturepatterns.mvc
+package com.yogesh.architecturepatterns.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.yogesh.architecturepatterns.databinding.ActivityMvcBinding
+import com.yogesh.architecturepatterns.databinding.ActivityMainBinding
 import com.yogesh.architecturepatterns.model.DogResponse
 import com.yogesh.architecturepatterns.network.ApiService
 import com.yogesh.architecturepatterns.utils.Resource
@@ -27,10 +27,10 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MvcActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var apiService: ApiService
-    private lateinit var activityMvcBinding: ActivityMvcBinding
+    private lateinit var activityMvcBinding: ActivityMainBinding
     private var _dogResponse1: MutableLiveData<DogResponse> = MutableLiveData()
     private var dogResponse1: LiveData<DogResponse> = _dogResponse1
     private var _failure1: MutableLiveData<String> = MutableLiveData()
@@ -40,7 +40,7 @@ class MvcActivity : AppCompatActivity() {
     private var dogResponse2: StateFlow<Resource<DogResponse>?> = _dogResponse2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMvcBinding = ActivityMvcBinding.inflate(layoutInflater)
+        activityMvcBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMvcBinding.root)
 
         attachObservers()
@@ -76,7 +76,6 @@ class MvcActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun clickEvents() {
@@ -126,10 +125,10 @@ class MvcActivity : AppCompatActivity() {
     }
 
     private fun setDogImage(body: DogResponse?) {
-        Glide.with(this@MvcActivity).load(body!!.message).into(activityMvcBinding.img)
+        Glide.with(this@MainActivity).load(body!!.message).into(activityMvcBinding.img)
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(this@MvcActivity, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
     }
 }
