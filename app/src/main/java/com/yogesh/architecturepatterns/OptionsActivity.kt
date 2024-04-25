@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.yogesh.architecturepatterns.databinding.ActivityOptionsBinding
-import com.yogesh.architecturepatterns.mvc.ui.MvcActivity
+import com.yogesh.architecturepatterns.mvc.MvcActivity
 import com.yogesh.architecturepatterns.mvp.ui.MvpActivity
 import com.yogesh.architecturepatterns.mvvm.ui.MvvmActivity
 

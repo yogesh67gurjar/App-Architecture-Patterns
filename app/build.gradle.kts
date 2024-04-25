@@ -72,6 +72,9 @@ dependencies {
 
     //for initialize viewModel
     implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
 
 // Allow references to generated code
