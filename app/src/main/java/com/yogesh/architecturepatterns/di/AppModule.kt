@@ -1,6 +1,8 @@
 package com.yogesh.architecturepatterns.di
 
-import com.yogesh.architecturepatterns.network.ApiService
+import com.yogesh.architecturepatterns.data.network.ApiService
+import com.yogesh.architecturepatterns.data.repository.DogRepositoryImplementation
+import com.yogesh.architecturepatterns.presentation.repository.DogRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,9 @@ class AppModule {
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Provides
+    fun providesDogRepository(apiService: ApiService): DogRepository {
+        return DogRepositoryImplementation(apiService)
+    }
 }

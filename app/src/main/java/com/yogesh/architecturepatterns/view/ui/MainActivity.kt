@@ -32,14 +32,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun attachObservers() {
-        dogViewModel.dogResponseLiveData.observe(this) {
-            Glide.with(this@MainActivity).load(it.message).into(activityMvcBinding.img)
-        }
-
-        dogViewModel.failureMutableLiveData.observe(this) {
-            Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-        }
-
         lifecycleScope.launch {
             dogViewModel.dogResponseMutableStateFlow.collect {
                 when (it) {
@@ -65,19 +57,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun clickEvents() {
         activityMvcBinding.hitBtn.setOnClickListener {
-            // liveData
-//            callApi1()
-
-            // stateflow
-            callApi2()
+            callApi()
         }
     }
 
-    private fun callApi2() {
-        dogViewModel.getDog2()
-    }
-
-    private fun callApi1() {
-        dogViewModel.getDog1()
+    private fun callApi() {
+        dogViewModel.getDog()
     }
 }

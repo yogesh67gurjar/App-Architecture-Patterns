@@ -1,6 +1,6 @@
-package com.yogesh.architecturepatterns.network
+package com.yogesh.architecturepatterns.data.network
 
-import com.yogesh.architecturepatterns.model.DogResponse
+import com.yogesh.architecturepatterns.data.model.DogResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

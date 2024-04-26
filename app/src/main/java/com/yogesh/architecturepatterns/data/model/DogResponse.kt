@@ -1,4 +1,4 @@
-package com.yogesh.architecturepatterns.model
+package com.yogesh.architecturepatterns.data.model
 
 data class DogResponse(
     val message: String,
