@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Architecture Patterns"
 include(":app")
- 
+include(":Loader")

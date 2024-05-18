@@ -11,6 +11,8 @@ import com.yogesh.architecturepatterns.databinding.ActivityMainBinding
 import com.yogesh.architecturepatterns.model.DogResponse
 import com.yogesh.architecturepatterns.network.ApiService
 import com.yogesh.architecturepatterns.utils.Resource
+import com.yogesh.loader.MyLoader.hideLoader
+import com.yogesh.loader.MyLoader.showLoader
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -49,10 +51,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun attachObservers() {
         dogResponse1.observe(this) {
+            hideLoader(activityMvcBinding.rootLayout)
             setDogImage(it)
         }
 
         failure1.observe(this) {
+            hideLoader(activityMvcBinding.rootLayout)
             showToast(it)
         }
 
@@ -60,14 +64,16 @@ class MainActivity : AppCompatActivity() {
             dogResponse2.collect {
                 when (it) {
                     is Resource.Loading -> {
-
+                        showLoader(activityMvcBinding.rootLayout, this@MainActivity)
                     }
 
                     is Resource.Failed -> {
+                        hideLoader(activityMvcBinding.rootLayout)
                         showToast(it.message)
                     }
 
                     is Resource.Success -> {
+                        hideLoader(activityMvcBinding.rootLayout)
                         setDogImage(it.data)
                     }
 
@@ -109,6 +115,7 @@ class MainActivity : AppCompatActivity() {
     }.flowOn(Dispatchers.IO)
 
     private fun callApi1() {
+        showLoader(activityMvcBinding.rootLayout, this@MainActivity)
         apiService.getDog1().enqueue(object : Callback<DogResponse> {
             override fun onResponse(call: Call<DogResponse>, response: Response<DogResponse>) {
                 if (response.isSuccessful) {
